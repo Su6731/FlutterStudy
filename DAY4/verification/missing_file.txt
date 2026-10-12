@@ -1,0 +1,2 @@
+数据文件缺失，请检查 data/books.json
+exitCode=1
