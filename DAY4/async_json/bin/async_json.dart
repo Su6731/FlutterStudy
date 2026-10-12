@@ -1,5 +1,6 @@
-import 'package:async_json/async_json.dart' as async_json;
+import 'package:async_json/async_json.dart';
 
-void main(List<String> arguments) {
-  print('Hello world: ${async_json.calculate()}!');
+Future<void> main(List<String> arguments) async {
+  final books = await loadBooks(arguments.isEmpty ? defaultDataPath : arguments.single);
+  print(summarize(books));
 }
