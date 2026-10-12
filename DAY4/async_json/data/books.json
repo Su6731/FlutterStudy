@@ -1,0 +1,8 @@
+[
+  {"id":"B001","title":"Dart 入门","category":"编程","borrowCount":28},
+  {"id":"B002","title":"Flutter 实践","category":"编程","borrowCount":45},
+  {"id":"B003","title":"数学之美","category":"科学","borrowCount":20},
+  {"id":"B004","title":"星空观察","category":"科学","borrowCount":12},
+  {"id":"B005","title":"散文选读","category":"文学","borrowCount":32},
+  {"id":"B006","title":"诗词赏析","category":"文学","borrowCount":18}
+]
