@@ -1,2 +1,0 @@
-JSON 数据错误：字段类型错误：图书 B001 的 borrowCount 必须是非负整数
-exitCode=1
