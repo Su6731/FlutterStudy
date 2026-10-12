@@ -1,0 +1,8 @@
+00:00 +0: loading test\gradebook_test.dart
+00:00 +0: test\gradebook_test.dart: 正常成绩的统计、分档和排名正确，排序不改变原列表
+00:00 +1: test\gradebook_test.dart: 构造函数、JSON 和 setter 拒绝非法分数，失败后保留原值
+00:00 +2: test\gradebook_test.dart: 分档边界、整数 JSON 分数和 setter 更新
+00:00 +3: test\gradebook_test.dart: 空成绩册返回明确的空结果
+00:00 +4: test\gradebook_test.dart: 最高分并列时返回第一位学生
+00:00 +5: test\gradebook_test.dart: GradeBook 混入日志能力，输出包含类型和消息
+00:00 +6: All tests passed!

@@ -8,6 +8,7 @@ void main(List<String> arguments) {
     Student('04', '赵敏', 73),
     Student('05', '陈晨', 60),
   ]);
+  book.log('开始统计课程成绩册，共 ${book.students.length} 人');
   print(book.students);
   print('平均分：${book.average.toStringAsFixed(2)}');
   print('最高分：${book.maxBy}');

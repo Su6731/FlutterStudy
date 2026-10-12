@@ -1,7 +1,8 @@
 import 'student.dart';
+import 'logger.dart';
 
 /// 成绩册保存列表副本，避免调用方增删原列表影响成绩册。
-class GradeBook {
+class GradeBook with Logger {
   final List<Student> _students;
 
   GradeBook(List<Student> students) : _students = List.of(students);

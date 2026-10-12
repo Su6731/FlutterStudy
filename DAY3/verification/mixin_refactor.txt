@@ -1,0 +1,2 @@
+[GradeBookBefore] 改造前：继承日志基类
+[GradeBook] 改造后：混入 Logger
