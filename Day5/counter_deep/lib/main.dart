@@ -29,6 +29,46 @@ class _CounterPageState extends State<CounterPage> {
   int _count = 0;
   int _step = 1;
 
+  void _log(String event) {
+    debugPrint('[CounterPage] $event count=$_count step=$_step');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _log('initState');
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _log('didChangeDependencies');
+  }
+
+  @override
+  void didUpdateWidget(covariant CounterPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _log('didUpdateWidget');
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    _log('reassemble');
+  }
+
+  @override
+  void deactivate() {
+    _log('deactivate');
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    _log('dispose');
+    super.dispose();
+  }
+
   void _increment() {
     setState(() {
       _count += _step;
@@ -42,53 +82,63 @@ class _CounterPageState extends State<CounterPage> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-      title: Text(widget.title),
-      actions: [
-        PopupMenuButton<int>(
-          tooltip: '选择步长',
-          initialValue: _step,
-          onSelected: _changeStep,
-          itemBuilder: (context) => const [
-            PopupMenuItem(value: 1, child: Text('步长 1')),
-            PopupMenuItem(value: 2, child: Text('步长 2')),
-            PopupMenuItem(value: 5, child: Text('步长 5')),
-          ],
-          icon: const Icon(Icons.tune),
-        ),
-      ],
-    ),
-    body: Center(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('你已经累计了这么多次进步：'),
-            Text(
-              '$_count',
-              key: const ValueKey('count'),
-              style: Theme.of(context).textTheme.displayMedium
-                  ?.copyWith(color: Theme.of(context).colorScheme.primary),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              '当前步长：$_step',
-              style: TextStyle(color: Theme.of(context).colorScheme.primary),
-            ),
-            const SizedBox(height: 8),
-            const Text('右上角选择 1 / 2 / 5，点击 + 累加'),
-          ],
+  Widget build(BuildContext context) {
+    _log('build');
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+        title: Text(widget.title),
+        actions: [
+          PopupMenuButton<int>(
+            tooltip: '选择步长',
+            initialValue: _step,
+            onSelected: _changeStep,
+            itemBuilder: (context) => const [
+              PopupMenuItem(value: 1, child: Text('步长 1')),
+              PopupMenuItem(value: 2, child: Text('步长 2')),
+              PopupMenuItem(value: 5, child: Text('步长 5')),
+            ],
+            icon: const Icon(Icons.tune),
+          ),
+        ],
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/images/counter_banner.png',
+                width: 260,
+                height: 140,
+                semanticLabel: '计数成长插画，三个逐渐升高的 teal 色柱形',
+              ),
+              const SizedBox(height: 24),
+              const Text('你已经累计了这么多次进步：'),
+              Text(
+                '$_count',
+                key: const ValueKey('count'),
+                style: Theme.of(context).textTheme.displayMedium
+                    ?.copyWith(color: Theme.of(context).colorScheme.primary),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                '当前步长：$_step',
+                style: TextStyle(color: Theme.of(context).colorScheme.primary),
+              ),
+              const SizedBox(height: 8),
+              const Text('右上角选择 1 / 2 / 5，点击 + 累加'),
+            ],
+          ),
         ),
       ),
-    ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: _increment,
-      tooltip: '增加 $_step',
-      child: const Icon(Icons.add),
-    ),
-  );
+      floatingActionButton: FloatingActionButton(
+        onPressed: _increment,
+        tooltip: '增加 $_step',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
 }
