@@ -1,0 +1,38 @@
+# Widget 树与工程结构
+
+## 创建时的官方计数器
+
+S = StatelessWidget，F = StatefulWidget，R = RenderObjectWidget（不是前两类）。
+树展开到 main.dart 显式创建的叶子，Flutter 框架内部实现不展开。
+
+```text
+main → runApp
+MyApp [S]
+└─ MaterialApp [F]
+   └─ MyHomePage [F] → _MyHomePageState
+      └─ Scaffold [F]
+         ├─ appBar: AppBar [F]
+         │  └─ title: Text [S]
+         ├─ body: Center [R]
+         │  └─ Column [R]
+         │     ├─ Text（提示）[S]
+         │     └─ Text（计数）[S]
+         └─ floatingActionButton: FloatingActionButton [S]
+            └─ Icon [S]
+```
+
+注意：不能把所有布局组件都标为 StatelessWidget；Center/Column 属于渲染对象组件。
+FloatingActionButton 本身是 StatelessWidget，点击后的计数状态在页面 State 中。
+Widget 类型以本机 Flutter SDK 类声明为依据。
+
+## 目录职责
+
+- lib/main.dart：Dart 入口和页面。
+- pubspec.yaml：依赖、图片与字体声明。
+- assets/images/：本地图片。
+- test/：组件行为测试。
+- android/、web/、windows/：平台工程。
+- docs/：Widget 树、日志和证据。
+- build/、.dart_tool/：构建缓存，忽略不提交。
+
+启动链路：main() → runApp(const MyApp()) → 根组件挂载 → build → 布局 → 绘制。
