@@ -1,30 +1,41 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:counter_deep/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:counter_deep/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('选择步长不改变累计值，FAB 按 1/2/5 累加', (tester) async {
     await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    await tester.tap(find.byType(FloatingActionButton));
     await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+    for (final entry in [(2, '3'), (5, '8'), (1, '9')]) {
+      final before = tester
+          .widget<Text>(find.byKey(const ValueKey('count')))
+          .data;
+      await tester.tap(find.byTooltip('选择步长'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('步长 ${entry.$1}'));
+      await tester.pumpAndSettle();
+      expect(
+        tester.widget<Text>(find.byKey(const ValueKey('count'))).data,
+        before,
+      );
+      expect(find.text('当前步长：${entry.$1}'), findsOneWidget);
+      await tester.tap(find.byType(FloatingActionButton));
+      await tester.pump();
+      expect(find.text(entry.$2), findsOneWidget);
+    }
+  });
+
+  testWidgets('主题种子是 teal 且 AppBar 取用主题色', (tester) async {
+    await tester.pumpWidget(const MyApp());
+    final app = tester.widget<MaterialApp>(find.byType(MaterialApp));
+    expect(
+      app.theme!.colorScheme,
+      ColorScheme.fromSeed(seedColor: Colors.teal),
+    );
+    final bar = tester.widget<AppBar>(find.byType(AppBar));
+    expect(bar.backgroundColor, app.theme!.colorScheme.primaryContainer);
   });
 }
