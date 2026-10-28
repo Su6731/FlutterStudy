@@ -23,5 +23,14 @@ void main() {
     // 标签云
     expect(find.byType(Wrap), findsOneWidget);
     expect(find.text('摄影'), findsOneWidget);
+
+    // 步骤二：Stack + Positioned 在线状态徽标（验证右下角绿色圆点）
+    final positioned = tester.widget<Positioned>(find.byWidgetPredicate(
+      (w) => w is Positioned && w.right == 0 && w.bottom == 0,
+    ));
+    final badge = positioned.child as Container;
+    final decoration = badge.decoration as BoxDecoration;
+    expect(decoration.color, Colors.green);
+    expect(decoration.shape, BoxShape.circle);
   });
 }
