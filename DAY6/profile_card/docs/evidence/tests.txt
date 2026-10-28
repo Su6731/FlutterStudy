@@ -1,0 +1,4 @@
+﻿00:00 +0: loading F:/FlutterPractice/DAY6/profile_card/test/widget_test.dart
+00:00 +0: 骨架包含头像/姓名/签名/统计条/标签云
+00:00 +1: 步骤三验收：360px 窄屏无 RenderFlex 溢出且统计条等分
+00:00 +2: All tests passed!

@@ -1,0 +1,6 @@
+﻿cd79bf3 feat: 6.2 autonomous practice - alignment/flex/stack/decor tasks
+970302f feat: match design spec, zero overflow warnings
+ebe4e77 feat: card decoration & status badge
+1ada6d8 feat: profile skeleton with alignment
+bd23d94 docs: complete lecture 5 progress report
+9963f7b feat: lifecycle logs & asset image
