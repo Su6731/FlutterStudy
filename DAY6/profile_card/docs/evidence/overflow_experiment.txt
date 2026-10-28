@@ -1,0 +1,77 @@
+﻿00:00 +0: loading F:/FlutterPractice/DAY6/profile_card/test/overflow_experiment_test.dart
+00:00 +0: 去掉 Expanded 后窄屏溢出实验
+══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY ╞═════════════════════════════════════════════════════════
+The following assertion was thrown during layout:
+A RenderFlex overflowed by 18 pixels on the right.
+
+The relevant error-causing widget was:
+  Row Row:file:///F:/FlutterPractice/DAY6/profile_card/lib/main.dart:100:30
+
+The overflowing RenderFlex has an orientation of Axis.horizontal.
+The edge of the RenderFlex that is overflowing has been marked in the rendering with a yellow and
+black striped pattern. This is usually caused by the contents being too big for the RenderFlex.
+Consider applying a flex factor (e.g. using an Expanded widget) to force the children of the
+RenderFlex to fit within the available space instead of being sized to their natural size.
+This is considered an error condition because it indicates that there is content that cannot be
+seen. If the content is legitimately bigger than the available space, consider clipping it with a
+ClipRect widget before putting it in the flex, or using a scrollable container rather than a Flex,
+like a ListView.
+The specific RenderFlex in question is: RenderFlex#20962 relayoutBoundary=up8 OVERFLOWING:
+  creator: Row ← Padding ← DecoratedBox ← Container ← Column ← Padding ← DecoratedBox ← Padding ←
+    Container ← Center ← KeyedSubtree-[GlobalKey#9ef41] ← _BodyBuilder ← ⋯
+  parentData: offset=Offset(0.0, 16.0) (can use size)
+  constraints: BoxConstraints(0.0<=w<=144.0, 0.0<=h<=Infinity)
+  size: Size(144.0, 50.0)
+  direction: horizontal
+  mainAxisAlignment: start
+  mainAxisSize: max
+  crossAxisAlignment: center
+  textDirection: ltr
+  verticalDirection: down
+  spacing: 0.0
+◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY ╞═════════════════════════════════════════════════════════
+The following assertion was thrown during layout:
+A RenderFlex overflowed by 72 pixels on the bottom.
+
+The relevant error-causing widget was:
+  Column Column:file:///F:/FlutterPractice/DAY6/profile_card/lib/main.dart:47:18
+
+The overflowing RenderFlex has an orientation of Axis.vertical.
+The edge of the RenderFlex that is overflowing has been marked in the rendering with a yellow and
+black striped pattern. This is usually caused by the contents being too big for the RenderFlex.
+Consider applying a flex factor (e.g. using an Expanded widget) to force the children of the
+RenderFlex to fit within the available space instead of being sized to their natural size.
+This is considered an error condition because it indicates that there is content that cannot be
+seen. If the content is legitimately bigger than the available space, consider clipping it with a
+ClipRect widget before putting it in the flex, or using a scrollable container rather than a Flex,
+like a ListView.
+The specific RenderFlex in question is: RenderFlex#9ced8 relayoutBoundary=up5 OVERFLOWING:
+  creator: Column ← Padding ← DecoratedBox ← Padding ← Container ← Center ←
+    KeyedSubtree-[GlobalKey#9ef41] ← _BodyBuilder ← MediaQuery ← LayoutId-[<_ScaffoldSlot.body>] ←
+    CustomMultiChildLayout ← _ActionsScope ← ⋯
+  parentData: offset=Offset(24.0, 24.0) (can use size)
+  constraints: BoxConstraints(0.0<=w<=144.0, 0.0<=h<=488.0)
+  size: Size(144.0, 488.0)
+  direction: vertical
+  mainAxisAlignment: center
+  mainAxisSize: min
+  crossAxisAlignment: center
+  verticalDirection: down
+  spacing: 0.0
+◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following message was thrown:
+Multiple exceptions (2) were detected during the running of the current test, and at least one was
+unexpected.
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:00 +0 -1: 去掉 Expanded 后窄屏溢出实验 [E]
+  Test failed. See exception logs above.
+  The test description was: 去掉 Expanded 后窄屏溢出实验
+  
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  F:/FlutterPractice/DAY6/profile_card/test/overflow_experiment_test.dart: 去掉 Expanded 后窄屏溢出实验

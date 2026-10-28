@@ -33,4 +33,23 @@ void main() {
     expect(decoration.color, Colors.green);
     expect(decoration.shape, BoxShape.circle);
   });
+
+  testWidgets('步骤三验收：360px 窄屏无 RenderFlex 溢出且统计条等分', (tester) async {
+    tester.view.physicalSize = const Size(360, 640);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+
+    // 若存在 RenderFlex 溢出，pumpWidget 阶段即抛异常导致测试失败
+    await tester.pumpWidget(const ProfileCardApp());
+
+    // 三个 Expanded 数字块等宽（flex 均为 1）
+    final sizes = find
+        .byType(Expanded)
+        .evaluate()
+        .map((e) => e.size!.width)
+        .toList();
+    expect(sizes.length, 3);
+    expect(sizes[0], closeTo(sizes[1], 0.5));
+    expect(sizes[1], closeTo(sizes[2], 0.5));
+  });
 }
